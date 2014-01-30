@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tasklist.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @tasklist.category %>
+</p>
+
+<p>
+  <strong>Is completed:</strong>
+  <%= @tasklist.is_completed %>
+</p>
+
+<p>
+  <strong>Date todo:</strong>
+  <%= @tasklist.date_todo %>
+</p>
+
+<%= link_to 'Edit', edit_tasklist_path(@tasklist) %> |
+<%= link_to 'Back', tasklists_path %>
