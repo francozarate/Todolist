@@ -1,6 +1,6 @@
 Todolist::Application.routes.draw do
-  get "navicontroller/home"
-  get "navicontroller/help"
+  root "navicontroller#home"
+  get 'help' => "navicontroller#help"
   resources :tasklists
 
   # The priority is based upon order of creation: first created -> highest priority.
