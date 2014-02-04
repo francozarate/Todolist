@@ -7,42 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<nav class="top-bar" data-topbar>
-       <ul class="title-area">
-         <!-- Title Area -->
-         <li class="name">
-           <h1>
-             <a href="/">
-               Todo List
-             </a>
-           </h1>
-         </li>
-         <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-       </ul>
-    
-       <section class="top-bar-section">
-         <!-- Right Nav Section -->
-         <ul class="right">
-           <li class="divider"></li>
-           <li><a href="/tasklists">Tasklists</a></li>
-           <li class="divider"></li>
-           <li><a href="/help">Help</a></li>
-         </ul>
-       </section>
-     </nav>
-     <div class="row">
-       <div class="large-12 columns">
-       </div>
-
-
-
-
-
-
-<%= yield %>
-<footer>
-    Franco Zarate and Merlyn Patricio 2014
-</footer>
+  <nav class="navbar navbar-default" role="navigation">
+    <ul class="nav navbar-nav">
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'Help', help_path %></li>
+      <li><%= link_to 'Tasks', tasklists_path %></li>
+    </ul>
+  </nav>
+  <%= yield %>
+  <footer>
+      Franco Zarate and Merlyn Patricio 2014
+  </footer>
 </body>
 </html>
