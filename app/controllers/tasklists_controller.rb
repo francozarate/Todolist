@@ -1,10 +1,20 @@
 class TasklistsController < ApplicationController
   before_action :set_tasklist, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token
 
   # GET /tasklists
   # GET /tasklists.json
   def index
     @tasklists = Tasklist.all
+  end
+
+  def check_task
+    Tasklist.find(params[:id]).check_task(params[:id])
+    redirect_to tasklists_path
+  end
+
+  def complete
+    @tasklists = Tasklist.find(:all, :conditions => {:is_completed => true})
   end
 
   # GET /tasklists/1
@@ -49,6 +59,10 @@ class TasklistsController < ApplicationController
         format.json { render json: @tasklist.errors, status: :unprocessable_entity }
       end
     end
+  end
+  def destroy_all
+    Tasklist.destroy_all
+    redirect_to tasklists_path
   end
 
   # DELETE /tasklists/1

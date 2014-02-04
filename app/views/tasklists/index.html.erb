@@ -1,15 +1,20 @@
 <h1>Listing tasklists</h1>
   <ul class="list-group">
     <% @tasklists.each do |tasklist| %>  
-      <li class="list-group-item"><input name="taskcheckbox" type="checkbox"> <%= tasklist.name%></li>
+      <li class="list-group-item">
+        <form action="/tasklists/check_task/<%= tasklist.id %>" method="post" id="task<%= tasklist.id %>">
+        <input type="hidden" name="id" value="<%= tasklist.id %>">
+        <% if tasklist.is_completed %>
+          <input name="taskcheckbox" type="checkbox" id="<%= tasklist.id %>" checked="checked">
+          <del><%= tasklist.name %></del>
+        <% else %>
+          <input name="taskcheckbox" type="checkbox" id="<%= tasklist.id %>" onclick="$('#task<%= tasklist.id %>').submit();">
+          <%= tasklist.name %>
+        <% end %>
+        </form>
+      </li>
     <% end %>
   </ul>
 <br>
-
+<%= link_to 'Clear Tasklist', del_all_path %>
 <%= link_to 'New Tasklist', new_tasklist_path %>
-
-<script type="text/javascript">
-  $("[name='taskcheckbox']").change(function() {
-    alert("hello world!");
-  })
-</script>

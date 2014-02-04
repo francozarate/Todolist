@@ -1,0 +1,11 @@
+<h1>Completed Tasks</h1>
+  <ul class="list-group">
+    <% @tasklists.each do |tasklist| %>  
+      <li class="list-group-item">
+        <%= tasklist.name %>
+      </li>
+    <% end %>
+  </ul>
+<br>
+
+<%= link_to 'New Tasklist', new_tasklist_path %>
